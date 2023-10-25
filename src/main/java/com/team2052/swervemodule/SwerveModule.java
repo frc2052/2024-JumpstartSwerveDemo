@@ -91,7 +91,6 @@ public class SwerveModule{
         /*
          * Steer motor
          */
-
         steerMotor = new TalonFX(steerMotorChannel);
         steerMotor.setInverted(SwerveConstants.SwerveModule.STEER_INVERTED);
         steerMotor.setNeutralMode(NeutralMode.Brake);
@@ -116,8 +115,6 @@ public class SwerveModule{
                 CAN_TIMEOUT_MS
             )
         );
-
-        System.out.println(canCoder.getAbsolutePosition());
 
         checkError(
             "Failed to set steer motor encoder position",
