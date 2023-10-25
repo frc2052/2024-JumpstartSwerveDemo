@@ -15,7 +15,6 @@ import com.ctre.phoenix.sensors.SensorInitializationStrategy;
 import com.revrobotics.REVLibError;
 
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -91,6 +90,7 @@ public class SwerveModule{
         /*
          * Steer motor
          */
+
         steerMotor = new TalonFX(steerMotorChannel);
         steerMotor.setInverted(SwerveConstants.SwerveModule.STEER_INVERTED);
         steerMotor.setNeutralMode(NeutralMode.Brake);
@@ -180,20 +180,10 @@ public class SwerveModule{
             desiredState.angle.getRadians() / steerPosConversionFactor
         );
     }
-    
-    public SwerveModulePosition getPosition() {
-        return new SwerveModulePosition(
-            driveMotor.getSelectedSensorPosition() * drivePosConversionFactor,
-            new Rotation2d(
-                steerMotor.getSelectedSensorPosition() * steerPosConversionFactor
-            )
-        );
-    }
 
     public CANCoder getCancoder() {
         return canCoder;
     }
-
 
     public static double getMaxVelocityMetersPerSecond() {
         /*

@@ -132,7 +132,7 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
   @Override
   public void periodic() {
-    debug();
+    //debug();
   }
 
   public void debug() {

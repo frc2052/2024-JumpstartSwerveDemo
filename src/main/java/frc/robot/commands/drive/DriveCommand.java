@@ -58,7 +58,7 @@ public class DriveCommand extends CommandBase {
 
     @Override
     public void execute() {
-        drivetrain.drive(getX(), -getY(), -getRotation());
+        drivetrain.drive(getX(), -getY(), getRotation());
     }
 
     @Override
