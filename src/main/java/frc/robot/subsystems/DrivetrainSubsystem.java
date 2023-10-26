@@ -25,13 +25,13 @@ public class DrivetrainSubsystem extends SubsystemBase {
 
   private static final SwerveDriveKinematics kinematics = new SwerveDriveKinematics(
       // Front left
-      new Translation2d(Constants.Drivetrain.DRIVETRAIN_TRACKWIDTH_METERS / 2.0, Constants.Drivetrain.DRIVETRAIN_WHEELBASE_METERS / 2.0),
-      // Front right
       new Translation2d(Constants.Drivetrain.DRIVETRAIN_TRACKWIDTH_METERS / 2.0, -Constants.Drivetrain.DRIVETRAIN_WHEELBASE_METERS / 2.0),
+      // Front right
+      new Translation2d(Constants.Drivetrain.DRIVETRAIN_TRACKWIDTH_METERS / 2.0, Constants.Drivetrain.DRIVETRAIN_WHEELBASE_METERS / 2.0),
       // Back left
-      new Translation2d(-Constants.Drivetrain.DRIVETRAIN_TRACKWIDTH_METERS / 2.0, Constants.Drivetrain.DRIVETRAIN_WHEELBASE_METERS / 2.0),
+      new Translation2d(-Constants.Drivetrain.DRIVETRAIN_TRACKWIDTH_METERS / 2.0, -Constants.Drivetrain.DRIVETRAIN_WHEELBASE_METERS / 2.0),
       // Back right
-      new Translation2d(-Constants.Drivetrain.DRIVETRAIN_TRACKWIDTH_METERS / 2.0, -Constants.Drivetrain.DRIVETRAIN_WHEELBASE_METERS / 2.0)
+      new Translation2d(-Constants.Drivetrain.DRIVETRAIN_TRACKWIDTH_METERS / 2.0, Constants.Drivetrain.DRIVETRAIN_WHEELBASE_METERS / 2.0)
   );
 
   /** Creates a new DrivetrainSubsystem. */
@@ -108,21 +108,21 @@ public class DrivetrainSubsystem extends SubsystemBase {
         || swerveModuleStates[2].speedMetersPerSecond != 0
         || swerveModuleStates[3].speedMetersPerSecond != 0;
 
-    frontRightWheel.setState(
-        swerveModuleStates[0].speedMetersPerSecond, 
-        hasVelocity ? swerveModuleStates[0].angle : frontLeftWheel.getState().angle
-    );
     frontLeftWheel.setState(
         swerveModuleStates[1].speedMetersPerSecond, 
         hasVelocity ? swerveModuleStates[1].angle : frontRightWheel.getState().angle
     );
-    backRightWheel.setState(
-        swerveModuleStates[2].speedMetersPerSecond, 
-        hasVelocity ? swerveModuleStates[2].angle : backLeftWheel.getState().angle
+    frontRightWheel.setState(
+        swerveModuleStates[0].speedMetersPerSecond, 
+        hasVelocity ? swerveModuleStates[0].angle : frontLeftWheel.getState().angle
     );
     backLeftWheel.setState(
         swerveModuleStates[3].speedMetersPerSecond, 
         hasVelocity ? swerveModuleStates[3].angle : backRightWheel.getState().angle
+    );
+    backRightWheel.setState(
+        swerveModuleStates[2].speedMetersPerSecond, 
+        hasVelocity ? swerveModuleStates[2].angle : backLeftWheel.getState().angle
     );
   }
 

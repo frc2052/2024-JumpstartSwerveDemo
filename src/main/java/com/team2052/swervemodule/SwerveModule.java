@@ -207,8 +207,8 @@ public class SwerveModule{
     }
 
     public void debug(String debugName) {
-        SmartDashboard.putNumber(debugName + " Offset Degrees", canCoder.getAbsolutePosition());
-        SmartDashboard.putNumber(debugName + " Degrees", Math.toDegrees(steerMotor.getSelectedSensorPosition() * steerPosConversionFactor));
+        System.out.println(debugName + " cancoder absolute position: " + canCoder.getAbsolutePosition());
+        //System.out.println(debugName + " motor sensor position: " + Math.toDegrees(steerMotor.getSelectedSensorPosition() * steerPosConversionFactor));
     }
 
     @SuppressWarnings("unchecked")
